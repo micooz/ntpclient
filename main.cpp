@@ -140,7 +140,7 @@ int main(int argc, char* agrv[]) {
 #ifdef WIN32
         Sleep(10);
 #else
-        usleep(1000000);
+        usleep(100000);
 #endif
     }
     return 0;

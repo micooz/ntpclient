@@ -1,6 +1,6 @@
 Debug/
 *.sdf
-
+*.suo
 *.o
 
 NtpClient
