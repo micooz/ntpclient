@@ -1,7 +1,9 @@
 #include <iostream>
 #include "boost/asio.hpp"
 #include "boost/date_time/posix_time/posix_time.hpp"
-
+#ifndef WIN32
+    #include <unistd.h>
+#endif
 using namespace boost::posix_time;
 using namespace boost::asio::ip;
 
@@ -135,7 +137,11 @@ int main(int argc, char* agrv[]) {
         time_t tt = ntp.getTime();
         boost::posix_time::ptime utc = from_time_t(tt);
         std::cout << "Local Timestamp:" << time(0) << '\t' << "NTP Server:" << tt << "(" << to_simple_string(utc) << ")" << std::endl;
+#ifdef WIN32
         Sleep(10);
+#else
+        usleep(1000000);
+#endif
     }
     return 0;
 }
